@@ -39,3 +39,11 @@ models:
     # Applies to all files under models/staging/
     staging:
       materialized: view
+    # stripe:
+    #   materialized: view
+    # # Applies to all files under models/stripe/payment/
+    # stripe.payment:
+    #   materialized: view
+    # # Applies to all files under models/jaffle_shop/orders/
+    # jaffle_shop.orders:
+    #   materialized: view
