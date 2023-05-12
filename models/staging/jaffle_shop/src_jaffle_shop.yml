@@ -7,19 +7,19 @@ sources:
     schema: jaffle_shop
     tables:
       - name: customers
-        description: Raw customers data
+        description: Crude customers data
         columns:
           - name: id
-            description: Primary key of raw customers data
+            description: Primary key of crude customers data
             tests:
               - unique
               - not_null
                   
       - name: orders
-        description: Raw orders data
+        description: Crude orders data
         columns:
           - name: id
-            description: Primary key of raw orders data
+            description: Primary key of crude orders data
             tests:
               - unique
               - not_null

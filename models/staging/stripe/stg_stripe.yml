@@ -1,0 +1,23 @@
+version: 2
+
+models:
+  - name: stg_payments
+    description: This model cleans up payment data
+    columns:
+      - name: payment_id
+        description: Primary key for stg_payments
+        tests:
+          - unique
+          - not_null
+      - name: payment_method
+        description: Method of payment
+        tests:
+          - accepted_values:
+              values: ['credit_card', 'coupon', 'bank_transfer', 'gift_card']
+      - name: order_id
+        description: Foreign key to stg_orders.order_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('stg_orders')
+              field: order_id

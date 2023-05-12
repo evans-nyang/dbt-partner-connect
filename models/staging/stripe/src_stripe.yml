@@ -6,6 +6,13 @@ sources:
     schema: stripe
     tables:
       - name: payment
+        description: Crude payment data
+        columns:
+          - name: id
+            description: Primary key of crude payment data
+            tests:
+              - unique
+              - not_null
         loaded_at_field: _batched_at
         freshness:
           warn_after: {count: 12, period: hour}
