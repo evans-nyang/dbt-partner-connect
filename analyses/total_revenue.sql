@@ -1,3 +1,5 @@
+{%- set payment_status = ['success', 'fail'] -%}
+
 with payments as (
 
     select * from {{ ref ('stg_payments') }}
@@ -7,14 +9,14 @@ with payments as (
 aggregated as (
 
     select
+        {% for status in payment_status %}
 
-    {% for payment_status in ['success'] %}
+            sum(case when status = '{{ status }}' then amount else 0 end) as {{ status }}_revenue {{ ',' if not loop.last }}
 
-        sum(case when status = '{{ payment_status }}' then amount else 0 end) as total_revenue {{ ',' if not loop.last }}
-
-    {% endfor %}
+        {% endfor %}
 
     from payments
+    
 )
 
 select * from aggregated
